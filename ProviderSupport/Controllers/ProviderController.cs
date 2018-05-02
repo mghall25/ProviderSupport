@@ -16,9 +16,34 @@ namespace ProviderSupport.Controllers
         private ProviderSupportContext db = new ProviderSupportContext();
 
         // GET: Provider
-        public ActionResult Index()
+        // sort by name or date
+        public ViewResult Index(string sortOrder, string searchString)
         {
-            return View(db.Providers.ToList());
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+            var providers = from s in db.Providers
+                           select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                providers = providers.Where(s => s.LastName.Contains(searchString)
+                                       || s.FirstName.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    providers = providers.OrderByDescending(s => s.LastName);
+                    break;
+                case "Date":
+                    providers = providers.OrderBy(s => s.CprExpDate);
+                    break;
+                case "date_desc":
+                    providers = providers.OrderByDescending(s => s.CprExpDate);
+                    break;
+                default:
+                    providers = providers.OrderBy(s => s.LastName);
+                    break;
+            }
+            return View(providers.ToList());
         }
 
         // GET: Provider/Details/5
