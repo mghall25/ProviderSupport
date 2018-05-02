@@ -1,0 +1,99 @@
+﻿@model IEnumerable<ProviderSupport.Models.Client>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PrimeNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmergencyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmergencyEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmergencyPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaOrg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Archived)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrimeNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BirthDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmergencyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmergencyEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmergencyPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaOrg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Archived)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ClientID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ClientID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ClientID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,153 @@
+﻿@model IEnumerable<ProviderSupport.Models.Transaction>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Client.PrimeNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Provider.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeStamp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateWorked)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeIn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeOut)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProgressNote)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OdometerStart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OdometerEnd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TravelPurpose)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpenseVendor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpensePurpose)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpenseAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmploymentType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmploymentDirSuppHrs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsDuplicate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WhenInvoiced)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WhenSentToExprs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WhenPaidToPayroll)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Client.PrimeNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Provider.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimeStamp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateWorked)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServiceType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimeIn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimeOut)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServiceDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProgressNote)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OdometerStart)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OdometerEnd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TravelPurpose)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpenseVendor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpensePurpose)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpenseAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmploymentType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmploymentDirSuppHrs)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsDuplicate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WhenInvoiced)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WhenSentToExprs)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WhenPaidToPayroll)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TransactionID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TransactionID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TransactionID })
+        </td>
+    </tr>
+}
+
+</table>
