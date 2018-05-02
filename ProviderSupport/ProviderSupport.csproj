@@ -160,11 +160,16 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProviderController.cs" />
     <Compile Include="Controllers\TransactionController.cs" />
+    <Compile Include="DAL\ProviderSupportConfiguration.cs" />
     <Compile Include="DAL\ProviderSupportContext.cs" />
     <Compile Include="DAL\ProviderSupportInitializer.cs" />
+    <Compile Include="DAL\ProviderSupportInterceptorLogging.cs" />
+    <Compile Include="DAL\ProviderSupportInterceptorTransientErrors.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Logging\Logger.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Provider.cs" />
     <Compile Include="Models\Transaction.cs" />

@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using ProviderSupport.DAL;
 using ProviderSupport.Models;
 using PagedList;
+using System.Data.Entity.Infrastructure;
 
 namespace ProviderSupport.Controllers
 {
@@ -99,7 +100,7 @@ namespace ProviderSupport.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            catch (DataException /* dex */)
+            catch (RetryLimitExceededException  /* dex */)
             {
                 // Log the error - can uncomment dex var to write to a log)
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the proble persists, contact your system administrator.");
@@ -144,7 +145,7 @@ namespace ProviderSupport.Controllers
 
                     return RedirectToAction("Index");
                 }
-                catch (DataException /* dex */)
+                catch (RetryLimitExceededException  /* dex */)
                 {
                     //Log the error (uncomment dex variable name and add a line here to write a log.
                     ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
