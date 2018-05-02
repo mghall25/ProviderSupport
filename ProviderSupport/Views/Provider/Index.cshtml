@@ -1,44 +1,52 @@
-﻿@model IEnumerable<ProviderSupport.Models.Provider>
+﻿@model PagedList.IPagedList<ProviderSupport.Models.Provider>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Providers";
 }
-<h2>Index</h2>
+<h2>Providers</h2>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Index", "Provider", FormMethod.Get))
 {
     <p>
-        Find by name: @Html.TextBox("SearchString")
+        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
         <input type="submit" value="Search" />
     </p>
 }
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.FirstName)
+            @*@Html.DisplayNameFor(model => model.FirstName) *@
         </th>
         <th>
-            @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+            @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PhoneNum)
+             @*@Html.DisplayNameFor(model => model.PhoneNum)*@
+            PhoneNum
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Email)
+            @*@Html.DisplayNameFor(model => model.Email)*@
+            email
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.BirthDate)
+            @*@Html.DisplayNameFor(model => model.BirthDate)*@
+            Birthday
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PayRate)
+            @*@Html.DisplayNameFor(model => model.PayRate)*@
+            Pay Rate
         </th>
         <th>
-            @Html.ActionLink("Enrollment Date", "Index", new { sortOrder = ViewBag.DateSortParm })
+            @Html.ActionLink("Enrollment Date", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Archived)
+            @*@Html.DisplayNameFor(model => model.Archived)*@
+            Archived
         </th>
         <th></th>
     </tr>
@@ -77,3 +85,8 @@
         </tr>
     }
 </table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

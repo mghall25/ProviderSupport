@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ProviderSupport.DAL;
 using ProviderSupport.Models;
+using PagedList;
 
 namespace ProviderSupport.Controllers
 {
@@ -17,10 +18,23 @@ namespace ProviderSupport.Controllers
 
         // GET: Provider
         // sort by name or date
-        public ViewResult Index(string sortOrder, string searchString)
+        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
+            ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
             var providers = from s in db.Providers
                            select s;
             if (!String.IsNullOrEmpty(searchString))
@@ -43,7 +57,9 @@ namespace ProviderSupport.Controllers
                     providers = providers.OrderBy(s => s.LastName);
                     break;
             }
-            return View(providers.ToList());
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+            return View(providers.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Provider/Details/5
