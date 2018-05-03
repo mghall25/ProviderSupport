@@ -49,7 +49,15 @@ namespace ProviderSupport.Migrations
             AlterColumn("dbo.Provider", "PhoneNum", c => c.String(nullable: false));
             AlterColumn("dbo.Provider", "Email", c => c.String(nullable: false));
             CreateIndex("dbo.Client", "CounsPaID");
+
+            // ADDED THIS - Create a temp BillToOrg for CounsPa to point to.
+            Sql("INSERT INTO dbo.BillToOrg (Name, Type, PhoneNum, Email, Address1, Address2, Address3) VALUES ('Temp', 1, '1234567894','em@fds.com','345 Blaine','','Newberg, OR 97132')");
+
+            // might have to add info to CounsPa here
+
+            // had problem with this statement
             AddForeignKey("dbo.Client", "CounsPaID", "dbo.CounsPa", "CounsPaID", cascadeDelete: true);
+            
             DropColumn("dbo.Client", "PA");
             DropColumn("dbo.Client", "PaOrg");
         }

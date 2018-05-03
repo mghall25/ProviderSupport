@@ -7,13 +7,13 @@ namespace ProviderSupport.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class ComplexDataModel : IMigrationMetadata
+    public sealed partial class ClientForeignKeyCreated : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ComplexDataModel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ClientForeignKeyCreated));
         
         string IMigrationMetadata.Id
         {
-            get { return "201805031736169_ComplexDataModel"; }
+            get { return "201805031844367_ClientForeignKeyCreated"; }
         }
         
         string IMigrationMetadata.Source

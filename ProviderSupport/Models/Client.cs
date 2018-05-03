@@ -56,7 +56,7 @@ namespace ProviderSupport.Models
 
         public int CounsPaID { get; set; }
 
-        public string BillToOrg { get; set; }
+        //public string BillToOrg { get; set; }
 
         public bool? Archived { get; set; }
 

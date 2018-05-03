@@ -182,9 +182,21 @@
     <Compile Include="Migrations\201805030054110_ProviderAttributesAdded.Designer.cs">
       <DependentUpon>201805030054110_ProviderAttributesAdded.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201805031736169_ComplexDataModel.cs" />
-    <Compile Include="Migrations\201805031736169_ComplexDataModel.Designer.cs">
-      <DependentUpon>201805031736169_ComplexDataModel.cs</DependentUpon>
+    <Compile Include="Migrations\201805031802473_ComplexDataModel.cs" />
+    <Compile Include="Migrations\201805031802473_ComplexDataModel.Designer.cs">
+      <DependentUpon>201805031802473_ComplexDataModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805031844367_ClientForeignKeyCreated.cs" />
+    <Compile Include="Migrations\201805031844367_ClientForeignKeyCreated.Designer.cs">
+      <DependentUpon>201805031844367_ClientForeignKeyCreated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805032002147_ClientRemoveBillingOrgColumn.cs" />
+    <Compile Include="Migrations\201805032002147_ClientRemoveBillingOrgColumn.Designer.cs">
+      <DependentUpon>201805032002147_ClientRemoveBillingOrgColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805032019261_TransactionExpenseAmountTypeToInt.cs" />
+    <Compile Include="Migrations\201805032019261_TransactionExpenseAmountTypeToInt.Designer.cs">
+      <DependentUpon>201805032019261_TransactionExpenseAmountTypeToInt.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BillToOrg.cs" />
@@ -321,8 +333,17 @@
     <EmbeddedResource Include="Migrations\201805030054110_ProviderAttributesAdded.resx">
       <DependentUpon>201805030054110_ProviderAttributesAdded.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805031736169_ComplexDataModel.resx">
-      <DependentUpon>201805031736169_ComplexDataModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805031802473_ComplexDataModel.resx">
+      <DependentUpon>201805031802473_ComplexDataModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805031844367_ClientForeignKeyCreated.resx">
+      <DependentUpon>201805031844367_ClientForeignKeyCreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805032002147_ClientRemoveBillingOrgColumn.resx">
+      <DependentUpon>201805032002147_ClientRemoveBillingOrgColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805032019261_TransactionExpenseAmountTypeToInt.resx">
+      <DependentUpon>201805032019261_TransactionExpenseAmountTypeToInt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

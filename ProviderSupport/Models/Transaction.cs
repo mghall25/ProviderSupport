@@ -55,7 +55,7 @@ namespace ProviderSupport.Models
 
         public string ExpensePurpose { get; set; }
 
-        public string ExpenseAmount { get; set; }
+        public int? ExpenseAmount { get; set; }
 
         // add id here later
         public int? EmploymentType { get; set; }
