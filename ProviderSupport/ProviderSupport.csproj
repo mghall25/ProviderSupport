@@ -174,8 +174,22 @@
     <Compile Include="Migrations\201805022254307_InitalCreate.Designer.cs">
       <DependentUpon>201805022254307_InitalCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805030046222_MaxLengthOnNames.cs" />
+    <Compile Include="Migrations\201805030046222_MaxLengthOnNames.Designer.cs">
+      <DependentUpon>201805030046222_MaxLengthOnNames.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805030054110_ProviderAttributesAdded.cs" />
+    <Compile Include="Migrations\201805030054110_ProviderAttributesAdded.Designer.cs">
+      <DependentUpon>201805030054110_ProviderAttributesAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805031736169_ComplexDataModel.cs" />
+    <Compile Include="Migrations\201805031736169_ComplexDataModel.Designer.cs">
+      <DependentUpon>201805031736169_ComplexDataModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\BillToOrg.cs" />
     <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\CounsPa.cs" />
     <Compile Include="Models\Provider.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -300,6 +314,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201805022254307_InitalCreate.resx">
       <DependentUpon>201805022254307_InitalCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805030046222_MaxLengthOnNames.resx">
+      <DependentUpon>201805030046222_MaxLengthOnNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805030054110_ProviderAttributesAdded.resx">
+      <DependentUpon>201805030054110_ProviderAttributesAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805031736169_ComplexDataModel.resx">
+      <DependentUpon>201805031736169_ComplexDataModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

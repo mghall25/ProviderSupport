@@ -34,10 +34,10 @@ namespace ProviderSupport.Migrations
 
             var clients = new List<Client>
             {
-            new Client{PrimeNo="EW1234563",FirstName="Fred",LastName="Alexander",PhoneNum="503.332.4569",Email="testemail@msn.com",BirthDate=DateTime.Parse("2005-09-01"),EmergencyName="Ava Frederickson",EmergencyEmail="ava@test.com",EmergencyPhone="456.789.1231",PA="Catherine Smith",PaOrg="Company A"},
-            new Client{PrimeNo="SA4567891",FirstName="Fanny",LastName="Banks",PhoneNum="503.332.4569",Email="testemail@msn.com",BirthDate=DateTime.Parse("2005-09-01"),EmergencyName="Ava Frederickson",EmergencyEmail="ava@test.com",EmergencyPhone="456.789.1231",PA="Catherine Smith",PaOrg="Company A"},
-            new Client{PrimeNo="YH45678944",FirstName="Myrtle",LastName="Curry",PhoneNum="503.332.4569",Email="testemail@msn.com",BirthDate=DateTime.Parse("2005-09-01"),EmergencyName="Ava Frederickson",EmergencyEmail="ava@test.com",EmergencyPhone="456.789.1231",PA="Catherine Smith",PaOrg="Company A"},
-            new Client{PrimeNo="TR45645644",FirstName="Bud",LastName="Drake",PhoneNum="503.332.4569",Email="testemail@msn.com",BirthDate=DateTime.Parse("2005-09-01"),EmergencyName="Ava Frederickson",EmergencyEmail="ava@test.com",EmergencyPhone="456.789.1231",PA="Catherine Smith",PaOrg="Company A"}
+            new Client{PrimeNo="EW1234563",FirstName="Fred",LastName="Alexander",PhoneNum="503.332.4569",Email="testemail@msn.com",BirthDate=DateTime.Parse("2005-09-01"),EmergencyName="Ava Frederickson",EmergencyEmail="ava@test.com",EmergencyPhone="456.789.1231",CounsPaID=1,BillToOrg="Temp A"},
+            new Client{PrimeNo="SA4567891",FirstName="Fanny",LastName="Banks",PhoneNum="503.332.4569",Email="testemail@msn.com",BirthDate=DateTime.Parse("2005-09-01"),EmergencyName="Ava Frederickson",EmergencyEmail="ava@test.com",EmergencyPhone="456.789.1231",CounsPaID=2,BillToOrg="Temp A"},
+            new Client{PrimeNo="YH45678944",FirstName="Myrtle",LastName="Curry",PhoneNum="503.332.4569",Email="testemail@msn.com",BirthDate=DateTime.Parse("2005-09-01"),EmergencyName="Ava Frederickson",EmergencyEmail="ava@test.com",EmergencyPhone="456.789.1231",CounsPaID=2,BillToOrg="Temp A"},
+            new Client{PrimeNo="TR45645644",FirstName="Bud",LastName="Drake",PhoneNum="503.332.4569",Email="testemail@msn.com",BirthDate=DateTime.Parse("2005-09-01"),EmergencyName="Ava Frederickson",EmergencyEmail="ava@test.com",EmergencyPhone="456.789.1231",CounsPaID=2,BillToOrg="Temp A"}
             };
             clients.ForEach(s => context.Clients.AddOrUpdate(p => p.LastName, s));
             context.SaveChanges();
@@ -65,6 +65,24 @@ namespace ProviderSupport.Migrations
                     context.Transactions.Add(e);
                 }
             }
+            context.SaveChanges();
+
+            var billToOrgs = new List<BillToOrg>
+            {
+                new BillToOrg { Name = "Billing Org 1", Type = 1, PhoneNum = "123.456.7890", Email = "dsf@msb.com",Address1="123 Main St.", Address2="Apt 123", Address3="Portland, OR 45678" },
+                new BillToOrg { Name = "Billing Org 2", Type = 2, PhoneNum = "123.456.7890", Email = "dsf@msb.com",Address1="123 Main St.", Address2="Apt 123", Address3="Portland, OR 45678" },
+                new BillToOrg { Name = "Billing Org 3", Type = 3, PhoneNum = "123.456.7890", Email = "dsf@msb.com",Address1="123 Main St.", Address2="Apt 123", Address3="Portland, OR 45678" }
+            };
+            billToOrgs.ForEach(s => context.BillToOrgs.AddOrUpdate(p => p.Name, s));
+            context.SaveChanges();
+
+            var counsPas = new List<CounsPa>
+            {
+                new CounsPa { Name = "Barbara Comfort", PhoneNum = "350.000.1239", Email ="dft@gfd.com", BillToOrgID = billToOrgs.Single( i => i.Name == "Billing Org 1").BillToOrgID },
+                new CounsPa { Name = "Henry Marks", PhoneNum = "350.000.1239", Email ="dft@gfd.com", BillToOrgID = billToOrgs.Single( i => i.Name == "Billing Org 3").BillToOrgID },
+                new CounsPa { Name = "Stephanie Hanks", PhoneNum = "350.000.1239", Email ="dft@gfd.com", BillToOrgID = billToOrgs.Single( i => i.Name == "Billing Org 2").BillToOrgID }
+            };
+            counsPas.ForEach(s => context.CounsPas.AddOrUpdate(p => p.Name, s));
             context.SaveChanges();
         }
     }

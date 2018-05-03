@@ -14,6 +14,8 @@ namespace ProviderSupport.DAL
         public DbSet<Provider> Providers { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<Client> Clients { get; set; }
+        public DbSet<BillToOrg> BillToOrgs { get; set; }
+        public DbSet<CounsPa> CounsPas { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
