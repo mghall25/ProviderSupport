@@ -198,11 +198,16 @@
     <Compile Include="Migrations\201805032019261_TransactionExpenseAmountTypeToInt.Designer.cs">
       <DependentUpon>201805032019261_TransactionExpenseAmountTypeToInt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805032355005_AddTableServiceType.cs" />
+    <Compile Include="Migrations\201805032355005_AddTableServiceType.Designer.cs">
+      <DependentUpon>201805032355005_AddTableServiceType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BillToOrg.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\CounsPa.cs" />
     <Compile Include="Models\Provider.cs" />
+    <Compile Include="Models\ServiceType.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\BirthDateGroup.cs" />
@@ -344,6 +349,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805032019261_TransactionExpenseAmountTypeToInt.resx">
       <DependentUpon>201805032019261_TransactionExpenseAmountTypeToInt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805032355005_AddTableServiceType.resx">
+      <DependentUpon>201805032355005_AddTableServiceType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

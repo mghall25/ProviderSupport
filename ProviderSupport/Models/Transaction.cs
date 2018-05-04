@@ -28,9 +28,8 @@ namespace ProviderSupport.Models
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Service Date")]
         public DateTime DateWorked { get; set; }
-        
-        // add id here later
-        public int ServiceType { get; set; }
+                
+        public int ServiceTypeID { get; set; }
 
         //[DataType(DataType.Time)]
         //[DisplayFormat(DataFormatString ="{0:hh:mm ampm", ApplyFormatInEditMode =true)]
@@ -70,6 +69,7 @@ namespace ProviderSupport.Models
 
         public DateTime? WhenPaidToPayroll { get; set; }
 
+        public virtual ServiceType ServiceType { get; set; }
         public virtual Provider Provider { get; set; }
         public virtual Client Client { get; set; }
     }
