@@ -24,7 +24,7 @@ namespace ProviderSupport
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/Litera.bootstrap.css",
+                      "~/Content/bootstrap.css",
                       "~/Content/site.css"));
         }
     }

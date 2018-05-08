@@ -18,7 +18,28 @@ namespace ProviderSupport.Migrations
         // NOTE: *** MUST FIX - ASSUMING UNIQUE LAST NAMES see: https://blogs.msdn.microsoft.com/rickandy/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs/
         protected override void Seed(ProviderSupport.DAL.ProviderSupportContext context)
         {
-           /* var serviceTypes = new List<ServiceType>
+            var serviceTypeEmpls = new List<ServiceTypeEmpl>
+            {
+                new ServiceTypeEmpl { ServiceTypeEmplID = 1, DisplayOrder=1, Desc = "Discovery", DescLong ="OR955269 Attendant Care, Home or Community", MultiDateEntry=false, VrService=false },
+                new ServiceTypeEmpl { ServiceTypeEmplID = 2, DisplayOrder=2, Desc = "Job Coaching - Initial", DescLong ="OR955269 Attendant Care, Home or Community", MultiDateEntry=true, VrService=false },
+                new ServiceTypeEmpl { ServiceTypeEmplID = 3, DisplayOrder=3, Desc = "Job Coaching - Ongoing", DescLong ="OR955269 Attendant Care, Home or Community", MultiDateEntry=true, VrService=false },
+                new ServiceTypeEmpl { ServiceTypeEmplID = 4, DisplayOrder=4, Desc = "Job Coaching - Maintenance", DescLong ="OR955269 Attendant Care, Home or Community", MultiDateEntry=true, VrService=false },
+                new ServiceTypeEmpl { ServiceTypeEmplID = 5, DisplayOrder=5, Desc = "Referral", DescLong ="OR955269 Attendant Care, Home or Community", MultiDateEntry=false, VrService=true },
+                new ServiceTypeEmpl { ServiceTypeEmplID = 6, DisplayOrder=6, Desc = "Portfolio", DescLong ="OR955269 Attendant Care, Home or Community", MultiDateEntry=false, VrService=true },
+                new ServiceTypeEmpl { ServiceTypeEmplID = 7, DisplayOrder=7, Desc = "Strategic Report", DescLong ="OR955269 Attendant Care, Home or Community", MultiDateEntry=false, VrService=true },
+                new ServiceTypeEmpl { ServiceTypeEmplID = 8, DisplayOrder=9, Desc = "Development", DescLong ="OR955269 Attendant Care, Home or Community", MultiDateEntry=false, VrService=true },
+                new ServiceTypeEmpl { ServiceTypeEmplID = 9, DisplayOrder=10, Desc = "Placement", DescLong ="OR955269 Attendant Care, Home or Community", MultiDateEntry=false, VrService=true },
+                new ServiceTypeEmpl { ServiceTypeEmplID = 10, DisplayOrder=11, Desc = "Coaching Plan", DescLong ="OR955269 Attendant Care, Home or Community", MultiDateEntry=false, VrService=true },
+                new ServiceTypeEmpl { ServiceTypeEmplID = 11, DisplayOrder=11, Desc = "VR Coaching (pd per hr)", DescLong ="OR955269 Attendant Care, Home or Community", MultiDateEntry=true, VrService=true },
+                new ServiceTypeEmpl { ServiceTypeEmplID = 12, DisplayOrder=13, Desc = "Retention", DescLong ="OR955269 Attendant Care, Home or Community", MultiDateEntry=false, VrService=true },
+                new ServiceTypeEmpl { ServiceTypeEmplID = 13, DisplayOrder=14, Desc = "Direct Placement (@ day 30)", DescLong ="OR955269 Attendant Care, Home or Community", MultiDateEntry=false, VrService=true },
+                new ServiceTypeEmpl { ServiceTypeEmplID = 14, DisplayOrder=15, Desc = "Direct Placement Retention (@ day 90)", DescLong ="OR955269 Attendant Care, Home or Community", MultiDateEntry=false, VrService=true },
+                new ServiceTypeEmpl { ServiceTypeEmplID = 15, DisplayOrder=8, Desc = "Strategic Review", DescLong ="OR955269 Attendant Care, Home or Community", MultiDateEntry=false, VrService=true }
+                };
+            serviceTypeEmpls.ForEach(s => context.ServiceTypeEmpls.AddOrUpdate(p => p.ServiceTypeEmplID, s));
+            context.SaveChanges();
+
+            var serviceTypes = new List<ServiceType>
             {
                 new ServiceType { ServiceTypeID = 1, Desc = "Hours", DescLong ="OR955269 Attendant Care, Home or Community" },
                 new ServiceType { ServiceTypeID = 2, Desc = "Relief Care", DescLong ="OR955079 Relief Care, Daily" },
@@ -31,10 +52,10 @@ namespace ProviderSupport.Migrations
                 new ServiceType { ServiceTypeID = 9, Desc = "Employee Development Training", DescLong ="Employee Development Training" },
                 new ServiceType { ServiceTypeID = 10, Desc = "Sick Leave", DescLong ="Sick Leave" },
                 new ServiceType { ServiceTypeID = 11, Desc = "Between-Client Mileage (or Other Unreimbursed)", DescLong ="Between-Client Mileage or Other Unreimbursed Mileage" },
-                new ServiceType { ServiceTypeID = 12, Desc = "Expenses (Reimbursable)", DescLong ="Expenses (Reimbursable)" },
+                new ServiceType { ServiceTypeID = 12, Desc = "Expenses (Reimbursable)", DescLong ="Expenses (Reimbursable)" }
                 };
             serviceTypes.ForEach(s => context.ServiceTypes.AddOrUpdate(p => p.ServiceTypeID, s));
-            context.SaveChanges();*/
+            context.SaveChanges();
 
             var billToOrgs = new List<BillToOrg>
             {
@@ -89,6 +110,7 @@ namespace ProviderSupport.Migrations
             new Transaction{TimeStamp=DateTime.Now,ProviderID=7,ClientID=2,DateWorked=DateTime.Parse("4/30/2018"),ServiceTypeID=1,TimeIn=new DateTime(2001,01,01,8,00,0),TimeOut=new DateTime(2001,01,01,17,00,0),ServiceDesc="Played Baseball.",ProgressNote="Test",TravelPurpose="Test",ExpenseVendor="Test",ExpensePurpose="Test"},
             new Transaction{TimeStamp=DateTime.Now,ProviderID=3,ClientID=1,DateWorked=DateTime.Parse("4/30/2018"),ServiceTypeID=1,TimeIn=new DateTime(2001,01,01,8,00,0),TimeOut=new DateTime(2001,01,01,17,00,0),ServiceDesc="Played Baseball.",ProgressNote="Test",TravelPurpose="Test",ExpenseVendor="Test",ExpensePurpose="Test"}
             };
+            
 
             foreach (Transaction e in transactions)
             {
@@ -101,8 +123,7 @@ namespace ProviderSupport.Migrations
                     context.Transactions.Add(e);
                 }
             }
-            context.SaveChanges();
-
+            context.SaveChanges();           
 
         }
     }

@@ -19,7 +19,8 @@ namespace ProviderSupport.Migrations
             
             AddColumn("dbo.Transaction", "ServiceTypeID", c => c.Int(nullable: false));
             CreateIndex("dbo.Transaction", "ServiceTypeID");
-           // AddForeignKey("dbo.Transaction", "ServiceTypeID", "dbo.ServiceType", "ServiceTypeID", cascadeDelete: true);
+            // This line causes a problem
+            AddForeignKey("dbo.Transaction", "ServiceTypeID", "dbo.ServiceType", "ServiceTypeID", cascadeDelete: true);
             DropColumn("dbo.Transaction", "ServiceType");
         }
         

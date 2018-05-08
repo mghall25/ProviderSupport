@@ -6,9 +6,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ProviderSupport.Models
 {    
-    // public enum ServiceType
-    //{ ADL, DSA, etc... }
-
     public class Transaction
     {
         // constructor
@@ -56,8 +53,8 @@ namespace ProviderSupport.Models
 
         public int? ExpenseAmount { get; set; }
 
-        // add id here later
-        public int? EmploymentType { get; set; }
+        [Required]        
+        public int? ServiceTypeEmplID { get; set; }
 
         public int? EmploymentDirSuppHrs { get; set; }
 
@@ -68,9 +65,10 @@ namespace ProviderSupport.Models
         public DateTime? WhenSentToExprs { get; set; }
 
         public DateTime? WhenPaidToPayroll { get; set; }
-
-        public virtual ServiceType ServiceType { get; set; }
+        
         public virtual Provider Provider { get; set; }
         public virtual Client Client { get; set; }
+        public virtual ServiceType ServiceType { get; set; }
+        public virtual ServiceTypeEmpl ServiceTypeEmpl { get; set; }
     }
 }

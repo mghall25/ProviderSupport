@@ -7,7 +7,8 @@ using System.ComponentModel.DataAnnotations;
 namespace ProviderSupport.Models
 {
     public class Provider
-    {
+    {   
+        [Display(Name="Provider ID")]
         public int ProviderID { get; set; }
 
         [Required]

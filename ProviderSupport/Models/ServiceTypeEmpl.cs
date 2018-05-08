@@ -7,10 +7,12 @@ using System.Web;
 
 namespace ProviderSupport.Models
 {
-    public class ServiceType
+    public class ServiceTypeEmpl
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ServiceTypeID { get; set; }
+        public int ServiceTypeEmplID { get; set; }
+
+        public int DisplayOrder { get; set; }
 
         [Required]
         [StringLength(50, ErrorMessage = "Enter up to 50 characters.")]
@@ -21,6 +23,18 @@ namespace ProviderSupport.Models
         [StringLength(150, ErrorMessage = "Enter up to 150 characters.")]
         [Display(Name = "Long Description")]
         public string DescLong { get; set; }
+
+        [Display(Name = "Allow Entry on MultiDate Form")]
+        public bool MultiDateEntry { get; set; }
+
+        [Display(Name = "VR Service")]
+        public bool VrService { get; set; }
+
+        public decimal? Track1Fee { get; set; }
+        public decimal? Track2Fee { get; set; }
+        public decimal? Track3Fee { get; set; }
+
+        public bool? FlatFeeService { get; set; }
 
         public virtual ICollection<Transaction> Transactions { get; set; }
     }

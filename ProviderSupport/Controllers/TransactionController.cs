@@ -18,7 +18,7 @@ namespace ProviderSupport.Controllers
         // GET: Transaction
         public ActionResult Index()
         {
-            var transactions = db.Transactions.Include(t => t.Client).Include(t => t.Provider);
+            var transactions = db.Transactions.Include(t => t.Client).Include(t => t.Provider).Include(t => t.ServiceType).Include(t => t.ServiceTypeEmpl);
             return View(transactions.ToList());
         }
 
@@ -40,8 +40,10 @@ namespace ProviderSupport.Controllers
         // GET: Transaction/Create
         public ActionResult Create()
         {
-            ViewBag.ClientID = new SelectList(db.Clients, "ClientID", "PrimeNo");
-            ViewBag.ProviderID = new SelectList(db.Providers, "ProviderID", "FirstName");
+            ViewBag.ClientID = new SelectList(db.Clients, "Client", "PrimeNo");
+            ViewBag.ProviderID = new SelectList(db.Providers, "Provider", "FullName");
+            ViewBag.ServiceTypeID = new SelectList(db.ServiceTypes, "ServiceTypeID", "Desc");
+            ViewBag.ServiceTypeEmplID = new SelectList(db.ServiceTypeEmpls, "ServiceTypeEmplID", "Desc");
             return View();
         }
 
@@ -50,7 +52,7 @@ namespace ProviderSupport.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TransactionID,TimeStamp,ProviderID,ClientID,DateWorked,ServiceType,TimeIn,TimeOut,ServiceDesc,ProgressNote,OdometerStart,OdometerEnd,TravelPurpose,ExpenseVendor,ExpensePurpose,ExpenseAmount,EmploymentType,EmploymentDirSuppHrs,IsDuplicate,WhenInvoiced,WhenSentToExprs,WhenPaidToPayroll")] Transaction transaction)
+        public ActionResult Create([Bind(Include = "TransactionID,TimeStamp,ProviderID,ClientID,DateWorked,ServiceTypeID,TimeIn,TimeOut,ServiceDesc,ProgressNote,OdometerStart,OdometerEnd,TravelPurpose,ExpenseVendor,ExpensePurpose,ExpenseAmount,ServiceTypeEmplID,EmploymentDirSuppHrs,IsDuplicate,WhenInvoiced,WhenSentToExprs,WhenPaidToPayroll")] Transaction transaction)
         {
             if (ModelState.IsValid)
             {
@@ -60,7 +62,9 @@ namespace ProviderSupport.Controllers
             }
 
             ViewBag.ClientID = new SelectList(db.Clients, "ClientID", "PrimeNo", transaction.ClientID);
-            ViewBag.ProviderID = new SelectList(db.Providers, "ProviderID", "FirstName", transaction.ProviderID);
+            ViewBag.ProviderID = new SelectList(db.Providers, "ProviderID", "FullName", transaction.ProviderID);
+            ViewBag.ServiceTypeID = new SelectList(db.ServiceTypes, "ServiceTypeID", "Desc", transaction.ServiceTypeID);
+            ViewBag.ServiceTypeEmplID = new SelectList(db.ServiceTypeEmpls, "ServiceTypeEmplID", "Desc", transaction.ServiceTypeEmplID);
             return View(transaction);
         }
 
@@ -78,6 +82,8 @@ namespace ProviderSupport.Controllers
             }
             ViewBag.ClientID = new SelectList(db.Clients, "ClientID", "PrimeNo", transaction.ClientID);
             ViewBag.ProviderID = new SelectList(db.Providers, "ProviderID", "FirstName", transaction.ProviderID);
+            ViewBag.ServiceTypeID = new SelectList(db.ServiceTypes, "ServiceTypeID", "Desc", transaction.ServiceTypeID);
+            ViewBag.ServiceTypeEmplID = new SelectList(db.ServiceTypeEmpls, "ServiceTypeEmplID", "Desc", transaction.ServiceTypeEmplID);
             return View(transaction);
         }
 
@@ -86,7 +92,7 @@ namespace ProviderSupport.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "TransactionID,TimeStamp,ProviderID,ClientID,DateWorked,ServiceType,TimeIn,TimeOut,ServiceDesc,ProgressNote,OdometerStart,OdometerEnd,TravelPurpose,ExpenseVendor,ExpensePurpose,ExpenseAmount,EmploymentType,EmploymentDirSuppHrs,IsDuplicate,WhenInvoiced,WhenSentToExprs,WhenPaidToPayroll")] Transaction transaction)
+        public ActionResult Edit([Bind(Include = "TransactionID,TimeStamp,ProviderID,ClientID,DateWorked,ServiceTypeID,TimeIn,TimeOut,ServiceDesc,ProgressNote,OdometerStart,OdometerEnd,TravelPurpose,ExpenseVendor,ExpensePurpose,ExpenseAmount,ServiceTypeEmplID,EmploymentDirSuppHrs,IsDuplicate,WhenInvoiced,WhenSentToExprs,WhenPaidToPayroll")] Transaction transaction)
         {
             if (ModelState.IsValid)
             {
@@ -96,6 +102,8 @@ namespace ProviderSupport.Controllers
             }
             ViewBag.ClientID = new SelectList(db.Clients, "ClientID", "PrimeNo", transaction.ClientID);
             ViewBag.ProviderID = new SelectList(db.Providers, "ProviderID", "FirstName", transaction.ProviderID);
+            ViewBag.ServiceTypeID = new SelectList(db.ServiceTypes, "ServiceTypeID", "Desc", transaction.ServiceTypeID);
+            ViewBag.ServiceTypeEmplID = new SelectList(db.ServiceTypeEmpls, "ServiceTypeEmplID", "Desc", transaction.ServiceTypeEmplID);
             return View(transaction);
         }
 

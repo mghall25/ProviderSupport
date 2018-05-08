@@ -7,7 +7,7 @@ namespace ProviderSupport.Models
 {
     public class Client
     {
-        [Display(Name="ID")]
+        [Display(Name="Client ID")]
         public int ClientID { get; set; }
 
         [Required]
@@ -54,10 +54,12 @@ namespace ProviderSupport.Models
         [Display(Name = "Em Phone")]
         public string EmergencyPhone { get; set; }
 
+        [Display(Name = "PA")]
         public int CounsPaID { get; set; }
 
         //public string BillToOrg { get; set; }
 
+        [Display(Name ="Archived?")]
         public bool? Archived { get; set; }
 
         public virtual CounsPa CounsPa { get; set; }
