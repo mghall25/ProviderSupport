@@ -18,8 +18,7 @@ namespace ProviderSupport.Controllers
         // GET: Client
         public ActionResult Index()
         {
-            var clients = db.Clients.Include(c => c.CounsPa);
-            return View(clients.ToList());
+            return View(db.Clients.ToList());
         }
 
         // GET: Client/Details/5
@@ -40,7 +39,6 @@ namespace ProviderSupport.Controllers
         // GET: Client/Create
         public ActionResult Create()
         {
-            ViewBag.CounsPaID = new SelectList(db.CounsPas, "CounsPaID", "Name");
             return View();
         }
 
@@ -49,7 +47,7 @@ namespace ProviderSupport.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ClientID,PrimeNo,FirstName,LastName,PhoneNum,Email,BirthDate,EmergencyName,EmergencyEmail,EmergencyPhone,CounsPaID,Archived")] Client client)
+        public ActionResult Create([Bind(Include = "ClientID,PrimeNo,FirstName,LastName,PhoneNum,Email,BirthDate,EmergencyName,EmergencyEmail,EmergencyPhone,PA,PaOrg,Archived")] Client client)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +56,6 @@ namespace ProviderSupport.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CounsPaID = new SelectList(db.CounsPas, "CounsPaID", "Name", client.CounsPaID);
             return View(client);
         }
 
@@ -74,7 +71,6 @@ namespace ProviderSupport.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CounsPaID = new SelectList(db.CounsPas, "CounsPaID", "Name", client.CounsPaID);
             return View(client);
         }
 
@@ -83,7 +79,7 @@ namespace ProviderSupport.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ClientID,PrimeNo,FirstName,LastName,PhoneNum,Email,BirthDate,EmergencyName,EmergencyEmail,EmergencyPhone,CounsPaID,Archived")] Client client)
+        public ActionResult Edit([Bind(Include = "ClientID,PrimeNo,FirstName,LastName,PhoneNum,Email,BirthDate,EmergencyName,EmergencyEmail,EmergencyPhone,PA,PaOrg,Archived")] Client client)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +87,6 @@ namespace ProviderSupport.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CounsPaID = new SelectList(db.CounsPas, "CounsPaID", "Name", client.CounsPaID);
             return View(client);
         }
 

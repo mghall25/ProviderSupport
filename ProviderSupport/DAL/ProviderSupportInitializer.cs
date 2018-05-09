@@ -28,24 +28,24 @@ namespace ProviderSupport.DAL
 
             var clients = new List<Client>
             {
-            new Client{PrimeNo="EW1234563",FirstName="Fred",LastName="Alexander",PhoneNum="503.332.4569",Email="testemail@msn.com",BirthDate=DateTime.Parse("2005-09-01"),EmergencyName="Ava Frederickson",EmergencyEmail="ava@test.com",EmergencyPhone="456.789.1231",CounsPaID=2},
-            new Client{PrimeNo="SA4567891",FirstName="Fanny",LastName="Banks",PhoneNum="503.332.4569",Email="testemail@msn.com",BirthDate=DateTime.Parse("2005-09-01"),EmergencyName="Ava Frederickson",EmergencyEmail="ava@test.com",EmergencyPhone="456.789.1231",CounsPaID=2},
-            new Client{PrimeNo="YH45678944",FirstName="Myrtle",LastName="Curry",PhoneNum="503.332.4569",Email="testemail@msn.com",BirthDate=DateTime.Parse("2005-09-01"),EmergencyName="Ava Frederickson",EmergencyEmail="ava@test.com",EmergencyPhone="456.789.1231",CounsPaID=2},
-            new Client{PrimeNo="TR45645644",FirstName="Bud",LastName="Drake",PhoneNum="503.332.4569",Email="testemail@msn.com",BirthDate=DateTime.Parse("2005-09-01"),EmergencyName="Ava Frederickson",EmergencyEmail="ava@test.com",EmergencyPhone="456.789.1231",CounsPaID=2}
+            new Client{PrimeNo="EW1234563",FirstName="Fred",LastName="Alexander",PhoneNum="503.332.4569",Email="testemail@msn.com",BirthDate=DateTime.Parse("2005-09-01"),EmergencyName="Ava Frederickson",EmergencyEmail="ava@test.com",EmergencyPhone="456.789.1231",PA="Catherine Smith",PaOrg="Company A"},
+            new Client{PrimeNo="SA4567891",FirstName="Fanny",LastName="Banks",PhoneNum="503.332.4569",Email="testemail@msn.com",BirthDate=DateTime.Parse("2005-09-01"),EmergencyName="Ava Frederickson",EmergencyEmail="ava@test.com",EmergencyPhone="456.789.1231",PA="Catherine Smith",PaOrg="Company A"},
+            new Client{PrimeNo="YH45678944",FirstName="Myrtle",LastName="Curry",PhoneNum="503.332.4569",Email="testemail@msn.com",BirthDate=DateTime.Parse("2005-09-01"),EmergencyName="Ava Frederickson",EmergencyEmail="ava@test.com",EmergencyPhone="456.789.1231",PA="Catherine Smith",PaOrg="Company A"},
+            new Client{PrimeNo="TR45645644",FirstName="Bud",LastName="Drake",PhoneNum="503.332.4569",Email="testemail@msn.com",BirthDate=DateTime.Parse("2005-09-01"),EmergencyName="Ava Frederickson",EmergencyEmail="ava@test.com",EmergencyPhone="456.789.1231",PA="Catherine Smith",PaOrg="Company A"}
             };
             clients.ForEach(s => context.Clients.Add(s));
             context.SaveChanges();
 
             var transactions = new List<Transaction>
             {
-            new Transaction{TimeStamp=new DateTime(2018,04,01,6,30,0),ProviderID=1,ClientID=3,DateWorked=DateTime.Parse("4/30/2018"),ServiceTypeID=1,TimeIn=new DateTime(2001,01,01,8,00,0),TimeOut=new DateTime(2001,01,01,17,00,0),ServiceDesc="Played Baseball.",ProgressNote="Test"},
-            new Transaction{TimeStamp=new DateTime(2018,04,02,6,30,0),ProviderID=2,ClientID=3,DateWorked=DateTime.Parse("4/30/2018"),ServiceTypeID=1,TimeIn=new DateTime(2001,01,01,8,00,0),TimeOut=new DateTime(2001,01,01,17,00,0),ServiceDesc="Played Baseball.",ProgressNote="Test"},
-            new Transaction{TimeStamp=new DateTime(2018,04,03,6,30,0),ProviderID=2,ClientID=2,DateWorked=DateTime.Parse("4/30/2018"),ServiceTypeID=1,TimeIn=new DateTime(2001,01,01,8,00,0),TimeOut=new DateTime(2001,01,01,17,00,0),ServiceDesc="Played Baseball.",ProgressNote="Test"},
-            new Transaction{TimeStamp=new DateTime(2018,04,04,6,30,0),ProviderID=4,ClientID=1,DateWorked=DateTime.Parse("4/30/2018"),ServiceTypeID=3,TimeIn=new DateTime(2001,01,01,8,00,0),TimeOut=new DateTime(2001,01,01,17,00,0),ServiceDesc="Played Baseball.",ProgressNote="Test"},
-            new Transaction{TimeStamp=new DateTime(2018,04,05,6,30,0),ProviderID=5,ClientID=3,DateWorked=DateTime.Parse("4/30/2018"),ServiceTypeID=1,TimeIn=new DateTime(2001,01,01,8,00,0),TimeOut=new DateTime(2001,01,01,17,00,0),ServiceDesc="Played Baseball.",ProgressNote="Test"},
-            new Transaction{TimeStamp=new DateTime(2018,04,06,6,30,0),ProviderID=6,ClientID=2,DateWorked=DateTime.Parse("4/30/2018"),ServiceTypeID=1,TimeIn=new DateTime(2001,01,01,8,00,0),TimeOut=new DateTime(2001,01,01,17,00,0),ServiceDesc="Played Baseball.",ProgressNote="Test"},
-            new Transaction{TimeStamp=new DateTime(2018,04,07,6,30,0),ProviderID=7,ClientID=2,DateWorked=DateTime.Parse("4/30/2018"),ServiceTypeID=1,TimeIn=new DateTime(2001,01,01,8,00,0),TimeOut=new DateTime(2001,01,01,17,00,0),ServiceDesc="Played Baseball.",ProgressNote="Test"},
-            new Transaction{TimeStamp=new DateTime(2018,04,08,6,30,0),ProviderID=3,ClientID=1,DateWorked=DateTime.Parse("4/30/2018"),ServiceTypeID=1,TimeIn=new DateTime(2001,01,01,8,00,0),TimeOut=new DateTime(2001,01,01,17,00,0),ServiceDesc="Played Baseball.",ProgressNote="Test"}
+            new Transaction{TimeStamp=new DateTime(2018,04,01,6,30,0),ProviderID=1,ClientID=3,DateWorked=DateTime.Parse("4/30/2018"),ServiceType=1,TimeIn=new DateTime(2001,01,01,8,00,0),TimeOut=new DateTime(2001,01,01,17,00,0),ServiceDesc="Played Baseball.",ProgressNote="Test"},
+            new Transaction{TimeStamp=new DateTime(2018,04,02,6,30,0),ProviderID=2,ClientID=3,DateWorked=DateTime.Parse("4/30/2018"),ServiceType=1,TimeIn=new DateTime(2001,01,01,8,00,0),TimeOut=new DateTime(2001,01,01,17,00,0),ServiceDesc="Played Baseball.",ProgressNote="Test"},
+            new Transaction{TimeStamp=new DateTime(2018,04,03,6,30,0),ProviderID=2,ClientID=2,DateWorked=DateTime.Parse("4/30/2018"),ServiceType=1,TimeIn=new DateTime(2001,01,01,8,00,0),TimeOut=new DateTime(2001,01,01,17,00,0),ServiceDesc="Played Baseball.",ProgressNote="Test"},
+            new Transaction{TimeStamp=new DateTime(2018,04,04,6,30,0),ProviderID=4,ClientID=1,DateWorked=DateTime.Parse("4/30/2018"),ServiceType=3,TimeIn=new DateTime(2001,01,01,8,00,0),TimeOut=new DateTime(2001,01,01,17,00,0),ServiceDesc="Played Baseball.",ProgressNote="Test"},
+            new Transaction{TimeStamp=new DateTime(2018,04,05,6,30,0),ProviderID=5,ClientID=3,DateWorked=DateTime.Parse("4/30/2018"),ServiceType=1,TimeIn=new DateTime(2001,01,01,8,00,0),TimeOut=new DateTime(2001,01,01,17,00,0),ServiceDesc="Played Baseball.",ProgressNote="Test"},
+            new Transaction{TimeStamp=new DateTime(2018,04,06,6,30,0),ProviderID=6,ClientID=2,DateWorked=DateTime.Parse("4/30/2018"),ServiceType=1,TimeIn=new DateTime(2001,01,01,8,00,0),TimeOut=new DateTime(2001,01,01,17,00,0),ServiceDesc="Played Baseball.",ProgressNote="Test"},
+            new Transaction{TimeStamp=new DateTime(2018,04,07,6,30,0),ProviderID=7,ClientID=2,DateWorked=DateTime.Parse("4/30/2018"),ServiceType=1,TimeIn=new DateTime(2001,01,01,8,00,0),TimeOut=new DateTime(2001,01,01,17,00,0),ServiceDesc="Played Baseball.",ProgressNote="Test"},
+            new Transaction{TimeStamp=new DateTime(2018,04,08,6,30,0),ProviderID=3,ClientID=1,DateWorked=DateTime.Parse("4/30/2018"),ServiceType=1,TimeIn=new DateTime(2001,01,01,8,00,0),TimeOut=new DateTime(2001,01,01,17,00,0),ServiceDesc="Played Baseball.",ProgressNote="Test"}
             };
             transactions.ForEach(s => context.Transactions.Add(s));
             context.SaveChanges();

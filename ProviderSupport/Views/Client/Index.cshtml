@@ -1,17 +1,16 @@
 ﻿@model IEnumerable<ProviderSupport.Models.Client>
 
 @{
-    ViewBag.Title = "Clients";
+    ViewBag.Title = "Index";
 }
 
-<h2>Clients</h2>
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
-
         <th>
             @Html.DisplayNameFor(model => model.PrimeNo)
         </th>
@@ -40,7 +39,10 @@
             @Html.DisplayNameFor(model => model.EmergencyPhone)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CounsPa.Name)
+            @Html.DisplayNameFor(model => model.PA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaOrg)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Archived)
@@ -78,15 +80,18 @@
             @Html.DisplayFor(modelItem => item.EmergencyPhone)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CounsPa.Name)
+            @Html.DisplayFor(modelItem => item.PA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaOrg)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Archived)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.ClientID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.ClientID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.ClientID })
+            @Html.ActionLink("Edit", "Edit", new { id=item.ClientID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ClientID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ClientID })
         </td>
     </tr>
 }
